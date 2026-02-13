@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>For My Valentine ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffb6c1 0%, #ffc0cb 50%, #ffd1dc 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            padding: 10px;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Floating flowers animation */
+        .flower {
+            position: fixed;
+            font-size: 24px;
+            animation: floatFlower 8s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes floatFlower {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Main container - mobile optimized */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 15px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Title - mobile responsive */
+        h1 {
+            color: #ff1493;
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+            word-break: break-word;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Subtitle - mobile responsive */
+        .subtitle {
+            color: #ff69b4;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            margin-bottom: 20px;
+            font-style: italic;
+            padding: 0 10px;
+        }
+
+        /* Photo frame - NO CIRCLE, just shows your photo */
+        .photo-frame {
+            width: min(300px, 85vw);
+            height: min(300px, 85vw);
+            margin: 20px auto;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
+            border: 5px solid white;
+            position: relative;
+            background: transparent;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Message box - mobile friendly */
+        .message {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px 20px;
+            border-radius: 30px;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 500px;
+            color: #d43f8d;
+            font-size: clamp(1.1rem, 4.5vw, 1.3rem);
+            line-height: 1.7;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Footer hearts - romantic touch */
+        .footer-hearts {
+            font-size: clamp(2.5rem, 10vw, 3.2rem);
+            margin-top: 30px;
+            animation: bounce 2s ease-in-out infinite;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 60px;
+            backdrop-filter: blur(3px);
+            border: 2px solid white;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 480px) {
+            .message {
+                padding: 20px 15px;
+                margin: 20px auto;
+            }
+            
+            .photo-frame {
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Valentine's Day! ❤️</h1>
+        <div class="subtitle">For My Beautiful Girlfriend</div>
+        
+        <!-- PHOTO FRAME - CHANGE "berna.jpg" to your photo's filename -->
+        <div class="photo-frame">
+            <img src="zai.jfif" alt="My Love" id="girlfriendPhoto">
+        </div>
+
+        <!-- Love message - beautifully centered -->
+        <div class="message">
+            <p>My dearest Zai,<br><br>
+            Every moment with you is special. You make my world brighter just by being in it. Thank you for being you!<br><br>
+            Love you always! 🥰</p>
+        </div>
+
+        <!-- Footer with lots of hearts (no counter, just pure love) -->
+        <div class="footer-hearts">
+            💖 💗 💓 💕 💘 💝
+        </div>
+    </div>
+
+    <script>
+        // Floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💖', '💗', '💓', '💕', '💘', '💝'][Math.floor(Math.random() * 7)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Floating flowers
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.innerHTML = ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷'][Math.floor(Math.random() * 6)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = (Math.random() * 4 + 5) + 's';
+            flower.style.fontSize = (Math.random() * 25 + 20) + 'px';
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 8000);
+        }
+
+        // Add hearts and flowers when tapping anywhere on screen
+        document.addEventListener('click', function(e) {
+            // Create 3 hearts and 2 flowers on each tap
+            for(let i = 0; i < 3; i++) createHeart();
+            for(let i = 0; i < 2; i++) createFlower();
+            
+            // Gentle vibration if supported
+            if (navigator.vibrate) navigator.vibrate(20);
+        });
+
+        // Same for touch events (mobile)
+        document.addEventListener('touchstart', function(e) {
+            for(let i = 0; i < 3; i++) createHeart();
+            for(let i = 0; i < 2; i++) createFlower();
+            
+            if (navigator.vibrate) navigator.vibrate(20);
+        });
+
+        // Start floating elements automatically
+        setInterval(createHeart, 400);
+        setInterval(createFlower, 600);
+        
+        // Create some initial hearts and flowers when page loads
+        window.onload = function() {
+            for(let i = 0; i < 5; i++) {
+                setTimeout(createHeart, i * 200);
+                setTimeout(createFlower, i * 300);
+            }
+        };
+    </script>
+</body>
+</html>
